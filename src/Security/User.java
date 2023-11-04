@@ -46,4 +46,8 @@ public class User {
     public int getIdUser() {
         return this.idUser;
     }
+    
+    public boolean isAdmin(){
+        return this.role == "manager";
+    }
 }

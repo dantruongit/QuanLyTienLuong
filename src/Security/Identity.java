@@ -1,5 +1,8 @@
 package Security;
 import Database.DatabaseManager;    
+import Utils.Tools;
+import Models.*;
+
 import java.sql.ResultSet;
 import java.util.Scanner;
 import java.sql.SQLException;
@@ -22,11 +25,7 @@ public class Identity {
             return false;
         }
     }
-    public static void showProfile(User user){
-        System.out.println("--- User properties ---");
-        System.out.println("Username: " + user.getUserName());
-        System.out.println("Password: " + user.getPassWord());
-        System.out.println("Role: " + user.getRole());
-        System.out.println("ID: " + user.getIdUser());
+    public static void showProfile(Employee e){
+        
     }
 }

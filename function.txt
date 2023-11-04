@@ -1,0 +1,9 @@
+- Xem danh sách nhân viên
+- Thêm/Sửa/Xóa Nhân viên
+- Chấm công
+- Xóa dữ liệu làm việc
+- Sắp xếp theo tên, lương, số ngày làm
+- Tìm kiếm
+- Phân trang
+- Phân quyền
+SELECT * FROM `account` INNER JOIN `employee` ON `account`.id_user = 1 AND `employee`.`id_user` = 1;
