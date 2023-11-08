@@ -1,9 +1,9 @@
-- Xem danh sách nhân viên
-- Thêm/Sửa/Xóa Nhân viên
-- Chấm công
-- Xóa dữ liệu làm việc
-- Sắp xếp theo tên, lương, số ngày làm
+- Xem thong tin nhân viên 	x
+- Xem danh sách nhân viên 	x
+- Thêm x / Xóa Nhân viên 	x
+- Chấm công			x
+- Sắp xếp 			x
 - Tìm kiếm
-- Phân trang
-- Phân quyền
 SELECT * FROM `account` INNER JOIN `employee` ON `account`.id_user = 1 AND `employee`.`id_user` = 1;
+SELECT id_user FROM account ORDER BY id_user DESC LIMIT 1
+INSERT INTO `employee`(`id_user`, `name`, `birth`, `address`, `worksday`, `last_checked`) VALUES ('[value-1]','[value-2]','[value-3]','[value-4]','[value-5]','[value-6]')

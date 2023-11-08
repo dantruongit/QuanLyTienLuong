@@ -48,6 +48,6 @@ public class User {
     }
     
     public boolean isAdmin(){
-        return this.role == "manager";
+        return this.role.trim().equals("manager");
     }
 }

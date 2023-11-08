@@ -31,15 +31,41 @@ public class DatabaseManager {
         ResultSet rs = stmt.executeQuery(query);
         return rs;
     }
+    
+    public boolean execute(String query) throws SQLException {
+        Statement stmt = this.con.createStatement();
+        boolean rs = stmt.execute(query);
+        return rs;
+    }
 
     public void loadUser(List<Employee> employees) throws SQLException{
         String sql = "SELECT * FROM `account` INNER JOIN `employee` ON `account`.id_user = `employee`.`id_user`;";
         ResultSet rs = this.executeQuery(sql);
         employees.clear();
+        
+        quanlytienluong.Run.managers.clear();
+        quanlytienluong.Run.nhanviens.clear();
+        quanlytienluong.Run.salarys.clear();
+        
         while(rs.next()){
-            Employee e = new Employee(rs.getString("name"), rs.getDate("birth"), rs.getString("address"), rs.getInt("worksday"), rs.getDate("last_checked"), this);
+            Employee e = new Employee();
+            e.setName(rs.getString("name"));
+            e.setBirth(rs.getDate("birth"));
+            e.setAddress(rs.getString("address"));
+            e.setWorksday(rs.getInt("worksday"));
+            e.setLast_checked(rs.getDate("last_checked"));
+            e.setIdUser(rs.getInt("id_user"));
+            e.setDb(this);
+            e.setRole(rs.getString("role"));
             employees.add(e);
+            if(Security.Identity.isAdmin(e.getIdUser(), this)){
+                quanlytienluong.Run.managers.add(Manager.clone(e));
+            }
+            else{
+                quanlytienluong.Run.nhanviens.add(NhanVien.clone(e));
+            }
         }
+        rs.close();
     }
     
     

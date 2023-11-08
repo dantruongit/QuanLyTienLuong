@@ -4,11 +4,12 @@
  */
 package Models;
 
-/**
- *
- * @author cr4zyb0t
- */
+import java.sql.SQLException;
+
 public interface IEmployee {
     public double getSalaryPerDay();
     public boolean checkOut();
+    public boolean timeKeeping();
+    public boolean updateToDB() throws SQLException;
+    public double getSalary();
 }

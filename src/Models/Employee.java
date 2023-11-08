@@ -2,6 +2,7 @@ package Models;
 import java.util.Date;
 import java.sql.SQLException;
 public class Employee{
+    private int id_user;
     protected String name;
     protected Date birth;
     protected String address;
@@ -9,6 +10,7 @@ public class Employee{
     protected int worksday;
     protected Date last_checked;
     protected Database.DatabaseManager db;
+    protected String role;
     public Employee(){
         
     }
@@ -22,6 +24,17 @@ public class Employee{
         this.db = db;
     }
     
+    @Override 
+    public String toString(){
+        String res = String.format("Information\nName\t : %s\nBirth\t : %s"
+                + "\nAddress\t : %s\nWorks \t : %d days",this.name,this.birth.toString(),this.address, this.worksday);
+        return res;
+    }
+    
+    public String display(){
+        String res = String.format("|%-8d|%-20s|%-12s|%-20s|%-10d|",this.id_user,this.name,this.birth.toString(),this.address, this.worksday);
+        return res;
+    }
     
     public String getName() {
         return name;
@@ -70,18 +83,20 @@ public class Employee{
     public void setDb(Database.DatabaseManager db){
         this.db = db;
     }
-    
-    public boolean createData(){
-        String sql = "";
-        return true;
+    public Database.DatabaseManager getDb(){
+        return this.db;
+    }
+    public void setIdUser(int id){
+        this.id_user = id;
+    }
+    public int getIdUser(){
+        return this.id_user;
+    }
+    public void setRole(String role){
+        this.role = role;
+    }
+    public String getRole(){
+        return this.role;
     }
     
-    public boolean commitData(){
-        String sql = "";
-        return true;
-    }
-    public boolean deleteSelf(){
-        String sql = "";
-        return true;
-    }
 }
